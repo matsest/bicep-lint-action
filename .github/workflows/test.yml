@@ -1,0 +1,26 @@
+name: Linter
+on:
+  pull_request:
+  workflow_dispatch:
+  push:
+    branches: [feat-test]
+
+jobs:
+  bicep-linter:
+    name: Bicep
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: true
+      matrix:
+        bicep-version: ["latest", "v0.14.46"]
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+        with:
+          # Incremental diffs require fetch depth to be at 0 to grab the target branch
+          fetch-depth: "0"
+      - name: Run Bicep Linter
+        uses: ./action.yml
+        with:
+          analyse-all-files: "true" # optional, defaults to false (only analyse changed files)
+          bicep-version: ${{ matrix.bicep-version }}
