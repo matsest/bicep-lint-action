@@ -20,7 +20,7 @@ jobs:
           # Incremental diffs require fetch depth to be at 0 to grab the target branch
           fetch-depth: "0"
       - name: Run Bicep Linter
-        uses: ./action.yml
+        uses: ./
         with:
           analyse-all-files: "true" # optional, defaults to false (only analyse changed files)
           bicep-version: ${{ matrix.bicep-version }}
