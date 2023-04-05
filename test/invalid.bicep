@@ -11,7 +11,7 @@ resource windowsVM 'Microsoft.Compute/virtualMachines@2020-12-01' = {
     }
     osProfile: {
       computerName: 'computerName'
-      // Should throw adminusername-should-not-be-literal
+      // Should throw adminusername-should-not-be-literal..
       adminUsername: 'adminUsername'
       adminPassword: 'adminPassword'
     }
